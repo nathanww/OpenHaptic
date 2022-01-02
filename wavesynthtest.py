@@ -8,7 +8,7 @@ def waveSynth(freq,power,duration=1,waveform="sine",lowcut=0,highcut=100, stepSi
         #we use 628 points per second, so the duration value can scale this
         totalPoints=(duration*6.28)/stepSize
         timing=[]
-        for motor in range(0,1):
+        for motor in range(0,3):
             print("***")
             #generate a sine wave
             temp=[]
@@ -33,4 +33,33 @@ def waveSynth(freq,power,duration=1,waveform="sine",lowcut=0,highcut=100, stepSi
             timing.append(1/totalPoints)
         return [motors,timing]
 
-print(str(waveSynth([20,20,20],[100,100,00],duration=0.1)))
+def combineWaves(wave1,wave2,weight=1.0):
+    newWave=[]
+    """combines two waveforms (with equal duration) toghether.
+    
+    Arguments:
+    wave1 -- list containing points in the first waveform
+    wave2 -- list contianing points in the second waveform
+    weight -- how much to weight the second waveform relative to the first. 1.0 is equal weight
+    """
+    if len(wave1) != len(wave2):
+        print("Error, the two waves are not equal length")
+        return -1
+    else:
+        for i in range(0,len(wave1)):
+            #We combine add the two waves but scale the second by weight. Then we scale them so that the overall sum is the same as the original waveform
+            temp=((wave1[i]/2)+((wave2[i]/2)*weight))
+            #find the amplitude of the new point compared to the old point, and use this to rescale the wave so that the amplitude doesn't change
+            scale=(1+weight)/2 
+            newWave.append(int(temp/scale))
+            
+    return newWave
+
+[waves,timing]=(waveSynth([20,1,20],[100,100,100],duration=1))
+
+test=combineWaves(waves[1],waves[0],weight=0.1)
+for dp in test:
+    print(str(dp))
+
+
+
