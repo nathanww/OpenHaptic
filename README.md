@@ -17,6 +17,8 @@ The specific part numers we used were:
 * [1 Adafruit 400mAh lipo battery](https://www.adafruit.com/product/3898)
 
 Assembly is fairly simple; each MOSFET is used to drive a motor (make sure that the MOSFET is placed in the low side of the motor, the current path should be battery -> motor -> MOSFET source -> MOSFET drain -> ground). The battery is plugged into the Feather's battery terminals; an onboard circuit will atuomatily control charging and discharging
+
+![Circuit schematic](https://raw.githubusercontent.com/nathanww/OpenHaptic/main/schematic.png)
 # Software installation
 
 1. Install MicroPython on your ESP32 feather, as shown [here](https://docs.micropython.org/en/latest/esp32/tutorial/intro.html)
@@ -27,8 +29,11 @@ All of the critical software is now installed, but your OpenHaptic won't do anyt
 Once code is loaded, it will run immediately, and everytime the board starts up it will wait 30 seconds and then run the last loaded program
 
 # Programming
-The OpenHaptic board will run any Micropython program you load on it; you can do anything one could do in micropython. There are also some convenience functions that simplify building apps:
+The OpenHaptic board will run any Micropython program you load on it; you can do anything one could do in micropython. There are also some convenience functions that simplify building apps, see [here](/api) for details
 
+# Communicating with other devices
+The ESP32 device has a Bluetooth/Wifi radio, and OpenHaptic includes some APIs for communicating with another device over Bluetooth. See here for more details.
+It is also entirely possible to ignore the API and just use custom Micropython code for communication.
 
 
 
