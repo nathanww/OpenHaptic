@@ -29,5 +29,15 @@ intensity--a list of three lists, each of which contains the intensity sequence 
 timing--a list containing the duration of each segment. The same timing is used for all motors.
 loop--the number of times to loop the sequence
 
+**[intensity,timing]=waveSynth(freq,power,duration=1,waveform="sine",lowcut=0,highcut=100, stepSize=0.01)**
 
+Generates intensity and timing lists to produce a specified waveform.
 
+**Arguments**
+freq--frequency of the wave, in Hertz
+power--peak intensity, from 0 to 100
+duration--duration in seconds
+waveform--either "sine" or "square"
+lowcut--minimum intensity for any point
+highcut--maximum intensity for any point
+stepSize--how long does each time point last in seconds. This can be adjusted to trade off resolution and memory use
