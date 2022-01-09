@@ -56,7 +56,9 @@ highcut--maximum intensity for any point
 stepSize--how long does each time point last in seconds. This can be adjusted to trade off resolution and memory use
 
 **Outputs**
+
 intensity--intensity list for one motor in the format used by vibePattern
+
 timing--timing list in the format used by vibepattern
 
 **wave=combineWaves(wave1,wave2,weight=1.0)**
@@ -76,16 +78,25 @@ weight--relative weights of the first and second wave. Values greater than 1 wei
 
 wave--the intensity list for the combined wave.
 
-# Communication functions
 
 # Communication protocol
 OpenHaptic uses the Nordic UART BLE service for loading programs.  The OpenHaptic Programmer app also uses this service to create an interactive shell for users to interact with the devide. Alterantively, the connection can be used to send data between a app running on OpenHaptic and a companion device. Programs can also accsess the Bluetooth/wifi hardware directly for other types of connections.
 
-**Communicating using the OpenHaptic shell**
+**Using the OpenHaptic shell (easiest method)**
+
+First, check that a connection exists by checking that **ble.isConnected** is true.
+
+If it is, you can send data to be displayed to the user by calling
+
+**ble.send(data)**
+
+Where data is an ASCII string to be displayed in the OpenHaptic Programmer application
+
+Data received from the shell is stored as a string in the **lastData** variable. Another variable, **lastDataTime**, keeps the time.time() timestamp of when the last data transmission ended.
 
 
-**Making a connection**
-The companion device must first make a BLE GATT connection to the OpenHaptic device
+**Connecting your own apps**
+If you want to send data without using the shell, your app must first make a BLE GATT connection to the OpenHaptic device
 
 Device name: ESP32
 
@@ -94,6 +105,8 @@ Service UUID: '6E400001-B5A3-F393-E0A9-E50E24DCCA9E'
 OpenHaptic's "receive" GATT attribute: 6E400002-B5A3-F393-E0A9-E50E24DCCA9E
 
 OpenHaptic's "transmit" attribute: 6E400003-B5A3-F393-E0A9-E50E24DCCA9E
+
+
 
 **Message formats**
 To send a message to the device, write it to the GATT receive attribute. The message should be an ASCII string ending in "ENDMSG"
