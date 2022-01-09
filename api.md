@@ -73,6 +73,35 @@ weight--relative weights of the first and second wave. Values greater than 1 wei
 
 
 **Outputs**
+
 wave--the intensity list for the combined wave.
+
+# Communication functions
+
+# Communication protocol
+OpenHaptic uses the Nordic UART BLE service for loading programs.  The OpenHaptic Programmer app also uses this service to create an interactive shell for users to interact with the devide. Alterantively, the connection can be used to send data between a app running on OpenHaptic and a companion device. Programs can also accsess the Bluetooth/wifi hardware directly for other types of connections.
+
+**Communicating using the OpenHaptic shell**
+
+
+**Making a connection**
+The companion device must first make a BLE GATT connection to the OpenHaptic device
+
+Device name: ESP32
+
+Service UUID: '6E400001-B5A3-F393-E0A9-E50E24DCCA9E'
+
+OpenHaptic's "receive" GATT attribute: 6E400002-B5A3-F393-E0A9-E50E24DCCA9E
+
+OpenHaptic's "transmit" attribute: 6E400003-B5A3-F393-E0A9-E50E24DCCA9E
+
+**Message formats**
+To send a message to the device, write it to the GATT receive attribute. The message should be an ASCII string ending in "ENDMSG"
+
+Messages sent by OpenHaptic are also strings terminated with "ENDMSG". 
+
+The Openhaptic device attempts to send status messages when connected: These are prefaced by "ST:" and consist of the current battery voltage, a comma, and the current program status (0=not running program, 1=running program)
+
+Messages prefaced with "PROG:" are commands to overwrite the current program with the data that comes afterwards.
 
 
