@@ -83,7 +83,7 @@ Data received from the shell is stored as a string in the **lastData** variable.
 *Connecting your own apps*
 If you want to send data without using the shell, your app must first make a BLE GATT connection to the OpenHaptic device
 
-Device name: ESP32
+Device name: OpenHaptic
 
 Service UUID: '6E400001-B5A3-F393-E0A9-E50E24DCCA9E'
 
