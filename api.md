@@ -11,7 +11,7 @@ Vibration pattern are defined by two lists, one listig the vibration intensity(0
 intensity=[0,100,0,100]
 timing=[0.5,0.5,0.5,0.5] pulses the motor on once a second
 
-**Arguments**
+*Arguments*
 
 intensity--a list of three lists, each of which contains the intensity sequence for one motor
 
@@ -27,7 +27,7 @@ Vibration pattern are defined by two lists, one listig the vibration intensity(0
 intensity=[0,100,0,100]
 timing=[0.5,0.5,0.5,0.5] pulses the motor on once a second
 
-**Arguments**
+*Arguments*
 
 intensity--a list of three lists, each of which contains the intensity sequence for one motor
 
@@ -39,7 +39,7 @@ loop--the number of times to loop the sequence
 
 Generates intensity and timing lists to produce a specified waveform.
 
-**Arguments**
+*Arguments*
 
 freq--frequency of the wave, in Hertz
 
@@ -55,7 +55,7 @@ highcut--maximum intensity for any point
 
 stepSize--how long does each time point last in seconds. This can be adjusted to trade off resolution and memory use
 
-**Outputs**
+*Outputs*
 
 intensity--intensity list for one motor in the format used by vibePattern
 
@@ -65,7 +65,7 @@ timing--timing list in the format used by vibepattern
 
 Creates a composite wave by blending two seperate waveforms. This function deals with intensity lists in vibePattern format
 
-**Arguments**
+*Arguments*
 
 wave1--intensity list of all the segments for the first wave
 
@@ -74,7 +74,7 @@ wave2--intensity list of all the segments for the second
 weight--relative weights of the first and second wave. Values greater than 1 weight the second wave more highly, values less than 1 weight the first wave more highly.
 
 
-**Outputs**
+*Outputs*
 
 wave--the intensity list for the combined wave.
 
@@ -82,7 +82,7 @@ wave--the intensity list for the combined wave.
 # Communication protocol
 OpenHaptic uses the Nordic UART BLE service for loading programs.  The OpenHaptic Programmer app also uses this service to create an interactive shell for users to interact with the devide. Alterantively, the connection can be used to send data between a app running on OpenHaptic and a companion device. Programs can also accsess the Bluetooth/wifi hardware directly for other types of connections.
 
-**Using the OpenHaptic shell (easiest method)**
+*Using the OpenHaptic shell (easiest method)*
 
 First, check that a connection exists by checking that **ble.isConnected** is true.
 
@@ -95,7 +95,7 @@ Where data is an ASCII string to be displayed in the OpenHaptic Programmer appli
 Data received from the shell is stored as a string in the **lastData** variable. Another variable, **lastDataTime**, keeps the time.time() timestamp of when the last data transmission ended.
 
 
-**Connecting your own apps**
+*Connecting your own apps*
 If you want to send data without using the shell, your app must first make a BLE GATT connection to the OpenHaptic device
 
 Device name: ESP32
@@ -108,7 +108,7 @@ OpenHaptic's "transmit" attribute: 6E400003-B5A3-F393-E0A9-E50E24DCCA9E
 
 
 
-**Message formats**
+*Message formats*
 To send a message to the device, write it to the GATT receive attribute. The message should be an ASCII string ending in "ENDMSG"
 
 Messages sent by OpenHaptic are also strings terminated with "ENDMSG". 
