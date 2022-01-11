@@ -19,31 +19,16 @@ timing--a list containing the duration of each segment. The same timing is used 
 
 loop--the number of times to loop the sequence
 
-**vibePattern(intensity, timing, loop=0)**
-
-Executes a vibration pattern on the three vibration motors
-
-Vibration pattern are defined by two lists, one listig the vibration intensity(0-100 and the other vibration duration(in seconds). Each pattern can consist of multiple segments with different intensities. For example, the pattern
-intensity=[0,100,0,100]
-timing=[0.5,0.5,0.5,0.5] pulses the motor on once a second
-
-*Arguments*
-
-intensity--a list of three lists, each of which contains the intensity sequence for one motor
-
-timing--a list containing the duration of each segment. The same timing is used for all motors.
-
-loop--the number of times to loop the sequence
 
 **[intensity,timing]=waveSynth(freq,power,duration=1,waveform="sine",lowcut=0,highcut=100, stepSize=0.01)**
 
-Generates intensity and timing lists to produce a specified waveform.
+Generates intensity and timing lists to produce a specified waveform. This function generates three waves at once (one for each motor)
 
 *Arguments*
 
-freq--frequency of the wave, in Hertz
+freq--List of 3 frequencies in Hertz, corresponding to motors 1-3
 
-power--peak intensity, from 0 to 100
+power--List of three peak intensities, from 0 to 100, corresponding to motors 1-3
 
 duration--duration in seconds
 
@@ -57,7 +42,7 @@ stepSize--how long does each time point last in seconds. This can be adjusted to
 
 *Outputs*
 
-intensity--intensity list for one motor in the format used by vibePattern
+intensity--intensity list for in the format used by vibePattern. This is alist of three lists, each one of which contains the sequence for a particular motor.
 
 timing--timing list in the format used by vibepattern
 
