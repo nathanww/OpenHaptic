@@ -32,7 +32,7 @@ Once code is loaded, it will run immediately, and every time the board starts up
 The OpenHaptic board will run any Micropython program you load on it; you can do anything one could do in micropython. There are also some convenience functions that simplify building apps, see [here](https://github.com/nathanww/OpenHaptic/blob/main/api.md) for details
 
 # Communicating with other devices
-The ESP32 device has a Bluetooth/Wifi radio, and OpenHaptic [includes some APIs](https://github.com/nathanww/OpenHaptic/blob/main/api.md) for communicating with another device over Bluetooth. See here for more details.
+The ESP32 device has a Bluetooth/Wifi radio, and OpenHaptic [includes some APIs](https://github.com/nathanww/OpenHaptic/blob/main/api.md) for communicating with another device over Bluetooth. 
 It is also entirely possible to ignore the API and just use custom Micropython code for communication.
 
 
