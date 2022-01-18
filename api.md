@@ -1,5 +1,5 @@
 # OpenHaptic API
-There are a few functions included with OpenHaptic to simplify building applications. Using the API is not required; you can also write Micropython code that accsesses all the ardware directly.
+There are a few functions included with OpenHaptic to simplify building applications. Using the API is not required; you can also write Micropython code that accesses all the hardware directly.
 
 # Vibration functions
 
@@ -7,7 +7,7 @@ There are a few functions included with OpenHaptic to simplify building applicat
 
 Executes a vibration pattern on the three vibration motors
 
-Vibration pattern are defined by two lists, one listig the vibration intensity(0-100 and the other vibration duration(in seconds). Each pattern can consist of multiple segments with different intensities. For example, the pattern
+Vibration pattern are defined by two lists, one listing the vibration intensity(0-100 and the other vibration duration(in seconds). Each pattern can consist of multiple segments with different intensities. For example, the pattern
 intensity=[0,100,0,100]
 timing=[0.5,0.5,0.5,0.5] pulses the motor on once a second
 
@@ -47,13 +47,13 @@ phaseOffset--Lets you shift the phase of the wave. By default, waves are generat
 
 *Outputs*
 
-intensity--intensity list for in the format used by vibePattern. This is alist of three lists, each one of which contains the sequence for a particular motor.
+intensity--intensity list for in the format used by vibePattern. This is a list of three lists, each one of which contains the sequence for a particular motor.
 
 timing--timing list in the format used by vibepattern
 
 **wave=combineWaves(wave1,wave2,weight=1.0)**
 
-Creates a composite wave by blending two seperate waveforms. This function deals with intensity lists in vibePattern format
+Creates a composite wave by blending two separate waveforms. This function deals with intensity lists in vibePattern format
 
 *Arguments*
 
@@ -84,7 +84,7 @@ wave--the intensity list for the resulting wave.
 
 
 # Communication protocol
-OpenHaptic uses the Nordic UART BLE service for loading programs.  The OpenHaptic Programmer app also uses this service to create an interactive shell for users to interact with the devide. Alterantively, the connection can be used to send data between a app running on OpenHaptic and a companion device. Programs can also accsess the Bluetooth/wifi hardware directly for other types of connections.
+OpenHaptic uses the Nordic UART BLE service for loading programs.  The OpenHaptic Programmer app also uses this service to create an interactive shell for users to interact with the device. Alterantively, the connection can be used to send data between a app running on OpenHaptic and a companion device. Programs can also accsess the Bluetooth/wifi hardware directly for other types of connections.
 
 *Using the OpenHaptic shell (easiest method)*
 
@@ -117,8 +117,6 @@ To send a message to the device, write it to the GATT receive attribute. The mes
 
 Messages sent by OpenHaptic are also strings terminated with "ENDMSG". 
 
-The Openhaptic device attempts to send status messages when connected: These are prefaced by "ST:" and consist of the current battery voltage, a comma, and the current program status (0=not running program, 1=running program)
+The OpenHaptic device attempts to send status messages when connected: These are prefaced by "ST:" and consist of the current battery voltage, a comma, and the current program status (0=not running program, 1=running program)
 
 Messages prefaced with "PROG:" are commands to overwrite the current program with the data that comes afterwards.
-
-
