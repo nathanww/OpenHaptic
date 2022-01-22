@@ -14,9 +14,11 @@ The specific part numbers we used were:
 * [1 ESP32 Feather](https://www.adafruit.com/product/3405)
 * [3 DZS electric vibration motors](https://www.amazon.com/gp/product/B07PHRX7QH)
 * [3 Fairchild 2N7000 MOSFETS](https://www.amazon.com/gp/product/B07PHRX7QH)
-* [1 Adafruit 400mAh lipo battery](https://www.adafruit.com/product/3898)
+* [1 Adafruit 400mAh lipo battery](https://www.adafruit.com/product/3898) *
 
 Assembly is fairly simple; each MOSFET is used to drive a motor (make sure that the MOSFET is placed in the low side of the motor, the current path should be battery -> motor -> MOSFET source -> MOSFET drain -> ground). The battery is plugged into the Feather's battery terminals; an onboard circuit will automatically control charging and discharging
+
+*400 mAh is probably a good minimum, this battery is also sold in larger sizes and if you anticipate using it heavily (3+ hours of continuous vibration or wireless communication between charges) a larger battery may be useful.
 
 ![Circuit schematic](https://raw.githubusercontent.com/nathanww/OpenHaptic/main/schematic.png)
 # Software installation
