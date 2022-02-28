@@ -29,7 +29,10 @@ Assembly is fairly simple; each MOSFET is used to drive a motor (make sure that 
 All of the critical software is now installed, but your OpenHaptic won't do anything until you load an app on it. The easiest way to do that is using our [Android app](https://play.google.com/store/apps/details?id=appinventor.ai_nathanwhitmore2020.hapticProgrammer) which will let you load Python code on the board. A few demo programs are included with the Android app for you to load.
 
 Once code is loaded, it will run immediately, and every time the board starts up it will wait 30 seconds and then run the last loaded program
+# Use
+The Openhaptic Programmer app will you you install and remove programs and communicate with the device.
 
+You can also toggle programs on and off by pressing the reset button on the board itself. Each time you press it the board will switch between "program running" and "idle" states
 # Programming
 The OpenHaptic board will run any Micropython program you load on it; you can do anything one could do in micropython. There are also some convenience functions that simplify building apps, see [here](https://github.com/nathanww/OpenHaptic/blob/main/api.md) for details
 
